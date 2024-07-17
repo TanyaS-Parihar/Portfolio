@@ -1,38 +1,71 @@
-.App {
-  text-align: center;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.marquee {
+  animation: marquee 12s 0.3s linear infinite both;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@keyframes marquee {
+  to {
+    transform: translateX(min(-100%, 0px));
+  }
+}
+.marquee2 {
+  animation: marquee 16s 0.3s linear infinite both;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@keyframes marquee2 {
+  to {
+    transform: translateX(min(0 - 100%, 0px));
+  }
+}
+.card-container {
+  transition: transform 1s ease-in-out;
+}
+.card-container:hover {
+  transform: scale(0.9);
+}
+/* transform 0.6s cubic-bezier(0.76, 0, 0.24, 1) */
+.box {
+  animation: widen 2s forwards cubic-bezier(0.76, 0, 0.24, 1);
+}
+@keyframes widen {
+  0% {
+    width: 0px;
+  }
+  100% {
+    width: 100px;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.change-text::after {
+  content: " ";
+  overflow: hidden;
+
+  width: 0;
+  white-space: nowrap;
+  margin-right: 2px white;
+  animation: changetext 10s infinite linear 2s, blinker 5s linear 2s infinite;
+  font: bold;
+  white-space: nowrap;
+
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+@keyframes changetext {
+  0% {
+    content: " Front-end developer ";
+  }
+  100% {
+    content: " React JS developer ";
+  }
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@keyframes blinker {
+  0% {
+    opacity: 0;
   }
-  to {
-    transform: rotate(360deg);
+  100% {
+    opacity: 100%;
   }
 }
